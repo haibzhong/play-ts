@@ -2,7 +2,9 @@
   "name": "play-ts",
   "version": "0.0.1",
   "scripts": {
-    "start": "parcel index.html"
+    "start": "NODE_ENV=development parcel index.html",
+    "build": "NODE_ENV=production parcel index.html",
+    "test": "echo no test; exit 0"
   },
   "devDependencies": {
     "parcel": "^0.0.1",
@@ -14,5 +16,6 @@
     "@types/react-dom": "^16.0.4",
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
-  }
+  },
+  "license": "MIT"
 }
