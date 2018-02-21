@@ -1,5 +1,7 @@
-import * as React from 'react'
-import './index.css'
+import * as React from 'react';
+import * as cx from 'classnames';
+import FakeInput from '../fakeinput';
+import './index.css';
 
 export interface TodoItem {
   text: string,
@@ -21,7 +23,7 @@ interface TodoListState {
   unfinished: Array<TodoItem>
 }
 
-class TodoList extends React.Component<{ items: TodoItem[] }, TodoListState> {
+class TodoList extends React.Component<{ items: TodoItem[], className: string }, TodoListState> {
   state = {
     finished: this.props.items.filter(item => item.status === 1),
     unfinished: this.props.items.filter(item => item.status === 0)
@@ -65,11 +67,10 @@ class TodoList extends React.Component<{ items: TodoItem[] }, TodoListState> {
 
   render() {
     const { finished, unfinished } = this.state;
+    const { className } = this.props;
     return (
-      <div className="todolist">
-        <div className="todolist__new">
-          <input className="todolist__input" type="text" placeholder="add something todo" onKeyPress={this.handleKeyPress} />
-        </div>
+      <div className={cx("todolist", className)}>
+        <FakeInput className="todolist__new" placeholder="add something todo" onKeyPress={this.handleKeyPress} />
         <ul className="todolist__unfinished">
           {
             unfinished.map((item, index) => (
